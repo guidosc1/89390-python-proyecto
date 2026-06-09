@@ -1,0 +1,13 @@
+<h1>Eliminar Post</h1>
+
+<p>
+    ¿Deseas eliminar "{{ post }}"?
+</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar
+    </button>
+</form>
