@@ -1,17 +1,11 @@
 {% extends 'base.html' %}
 
-{% load blog_filters %}
-
-{% block title %}
-    Lista de Posts
-{% endblock %}
-
 {% block content %}
 
-<h1>Listado de Posts</h1>
+<h1>Posts</h1>
 
 <p>
-    <a href="{% url 'post_create' %}">
+    <a href="{% url 'core:post_create' %}">
         Crear nuevo post
     </a>
 </p>
@@ -19,34 +13,32 @@
 <ul>
     {% for post in posts %}
         <li>
-            <strong>
-                {{ post.title|mayusculas }}
-            </strong>
 
-            |
+            <h3>{{ post.title }}</h3>
 
-            <a href="{% url 'post_detail' post.pk %}">
-                Ver
-            </a>
+            <p>
+                {{ post.content|truncatechars:100 }}
+            </p>
 
-            |
+            <div class="actions">
 
-            <a href="{% url 'post_update' post.pk %}">
-                Editar
-            </a>
+                <a href="{% url 'core:post_detail' post.pk %}">
+                    Ver
+                </a>
 
-            |
+                <a href="{% url 'core:post_update' post.pk %}">
+                    Editar
+                </a>
 
-            <a href="{% url 'post_delete' post.pk %}">
-                Eliminar
-            </a>
+                <a href="{% url 'core:post_delete' post.pk %}">
+                    Eliminar
+                </a>
+
+            </div>
 
         </li>
-
     {% empty %}
-
-        <li>No hay posts disponibles.</li>
-
+        <li>No hay publicaciones.</li>
     {% endfor %}
 </ul>
 

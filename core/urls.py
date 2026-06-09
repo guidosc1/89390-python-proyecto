@@ -1,12 +1,15 @@
 from django.urls import path
 
 from .views import (
+    HomeView,
     PostListView,
     PostDetailView,
     PostCreateView,
     PostUpdateView,
     PostDeleteView
 )
+
+app_name = "core"
 
 urlpatterns = [
 
@@ -39,4 +42,9 @@ urlpatterns = [
         PostDeleteView.as_view(),
         name="post_delete"
     ),
+    path(
+    "",
+    HomeView.as_view(),
+    name="home"
+),
 ]

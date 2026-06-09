@@ -7,7 +7,8 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    TemplateView
 )
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -72,3 +73,6 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy(
         "post_list"
     )
+
+class HomeView(TemplateView):
+    template_name = "home.html"

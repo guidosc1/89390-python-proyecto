@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,16 +8,25 @@
             Mi Blog
         {% endblock %}
     </title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
 </head>
 <body>
 
-    <nav>
-        {% block nav %}
-            <a href="/">Inicio</a> |
-            <a href="/posts/">Posts</a> |
-            <a href="/admin/">Admin</a>
-        {% endblock %}
-    </nav>
+   <nav>
+    <a href="{% url 'core:home' %}">Inicio</a>
+
+    <a href="{% url 'core:post_list' %}">
+        Posts
+    </a>
+
+    <a href="{% url 'core:post_create' %}">
+        Nuevo Post
+    </a>
+
+    <a href="/admin/">
+        Admin
+    </a>
+</nav>
 
     <hr>
 

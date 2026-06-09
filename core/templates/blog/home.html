@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Mi Blog Django</h1>
+
+    <p>
+        Proyecto de práctica para aprender modelos, vistas,
+        formularios, templates y autenticación con Django.
+    </p>
+
+    <div class="hero-actions">
+        <a href="{% url 'core:post_list' %}">
+            Ver publicaciones
+        </a>
+
+        <a href="{% url 'core:post_create' %}">
+            Crear publicación
+        </a>
+    </div>
+
+</section>
+
+<section>
+
+    <h2>¿Qué incluye este proyecto?</h2>
+
+    <ul>
+        <li>CRUD completo de publicaciones</li>
+        <li>Templates con herencia</li>
+        <li>Class Based Views</li>
+        <li>Model Forms</li>
+        <li>URLs con namespacing</li>
+        <li>Panel de administración</li>
+    </ul>
+
+</section>
+
+{% endblock %}
