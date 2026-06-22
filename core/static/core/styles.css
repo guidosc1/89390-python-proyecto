@@ -163,3 +163,39 @@ button:hover {
 .hero-actions a:hover {
     background-color: #1d4ed8;
 }
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: .3rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+
+.error-box {
+    background: #ffe5e5;
+    border: 1px solid #ffaaaa;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.error-list {
+    color: #c00;
+    margin-top: .3rem;
+    padding-left: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
