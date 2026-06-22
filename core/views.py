@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
-from .models import Post
+from .models import Post, Author
 from .forms import PostForm
+
+from django.shortcuts import render
 
 from django.views.generic import (
     ListView,
@@ -76,3 +78,15 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
 
 class HomeView(TemplateView):
     template_name = "home.html"
+
+
+
+def buscar_autores(request):
+    query = request.GET.get("q", "")
+
+    resultados = Author.objects.filter(name__icontains=query) if query else []
+
+    return render(request, "blog/search_authors.html", {
+        "resultados": resultados,
+        "query": query
+    })

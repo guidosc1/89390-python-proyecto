@@ -1,0 +1,13 @@
+<form method="get">
+    <input type="text" name="q" value="{{ query }}">
+    <button type="submit">Buscar autores</button>
+</form>
+
+{% for author in resultados %}
+    <div>
+        <h3>{{ author.name }}</h3>
+        <p>{{ author.email }}</p>
+    </div>
+{% empty %}
+    <p>No hay resultados</p>
+{% endfor %}

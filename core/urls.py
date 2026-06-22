@@ -6,7 +6,8 @@ from .views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    buscar_autores
 )
 
 app_name = "core"
@@ -47,4 +48,5 @@ urlpatterns = [
     HomeView.as_view(),
     name="home"
 ),
+path("buscar/", buscar_autores, name="search_authors"),
 ]

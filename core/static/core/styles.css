@@ -22,7 +22,7 @@ nav {
     padding: 16px;
 }
 
-nav a {
+nav a,nav span{
     color: white;
     text-decoration: none;
     margin-right: 16px;

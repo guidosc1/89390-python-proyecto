@@ -1,0 +1,24 @@
+<header>
+
+
+<nav>
+    <span>{{ nombre_sitio }}</span>
+    <a href="{% url 'core:home' %}">Inicio</a>
+
+    <a href="{% url 'core:post_list' %}">
+        Posts
+    </a>
+
+    <a href="{% url 'core:post_create' %}">
+        Nuevo Post
+    </a>
+
+    <a href="{% url 'core:search_authors' %}">
+        Buscar autores
+    </a>
+
+    <a href="/admin/">
+        Admin
+    </a>
+</nav>
+</header>

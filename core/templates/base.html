@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
+        
         {% block title %}
             Mi Blog
         {% endblock %}
@@ -12,21 +13,7 @@
 </head>
 <body>
 
-   <nav>
-    <a href="{% url 'core:home' %}">Inicio</a>
-
-    <a href="{% url 'core:post_list' %}">
-        Posts
-    </a>
-
-    <a href="{% url 'core:post_create' %}">
-        Nuevo Post
-    </a>
-
-    <a href="/admin/">
-        Admin
-    </a>
-</nav>
+   {% include 'blog/partials/header.html' %}
 
     <hr>
 
