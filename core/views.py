@@ -1,8 +1,14 @@
 from django.urls import reverse_lazy
 from .models import Post, Author
-from .forms import PostForm
+from .forms import PostForm,UserRegistrationForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.shortcuts import render
+
+from django.shortcuts import redirect, render
 
 from django.views.generic import (
     ListView,
@@ -13,7 +19,6 @@ from django.views.generic import (
     TemplateView
 )
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 class PostListView(ListView):
 
@@ -42,7 +47,7 @@ class PostDetailView(DetailView):
     context_object_name = "post"
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin,CreateView):
 
     model = Post
 
@@ -54,7 +59,7 @@ class PostCreateView(CreateView):
         "post_list"
     )
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin,UpdateView):
 
     model = Post
 
@@ -90,3 +95,39 @@ def buscar_autores(request):
         "resultados": resultados,
         "query": query
     })
+
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+
+
+class UserRegisterView(CreateView):
+
+    model = User
+
+    form_class = UserRegistrationForm
+
+    template_name = "registration/register.html"
+
+    success_url = reverse_lazy("core:login")
+
+    def form_valid(self, form):
+
+        self.object = form.save(commit=False)
+
+        self.object.set_password(
+            form.cleaned_data["password"]
+        )
+
+        self.object.save()
+
+        return redirect("core:login")
+    
+class UserLoginView(LoginView):
+
+    template_name = "registration/login.html"
+
+    redirect_authenticated_user = True
+
+
+class UserLogoutView(LogoutView):
+    pass

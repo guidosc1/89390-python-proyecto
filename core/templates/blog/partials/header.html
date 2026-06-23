@@ -1,24 +1,35 @@
 <header>
-
-
-<nav>
+  <nav>
     <span>{{ nombre_sitio }}</span>
     <a href="{% url 'core:home' %}">Inicio</a>
 
-    <a href="{% url 'core:post_list' %}">
-        Posts
-    </a>
+    <a href="{% url 'core:post_list' %}"> Posts </a>
 
-    <a href="{% url 'core:post_create' %}">
-        Nuevo Post
-    </a>
+    <a href="{% url 'core:post_create' %}"> Nuevo Post </a>
 
-    <a href="{% url 'core:search_authors' %}">
-        Buscar autores
-    </a>
+    <a href="{% url 'core:search_authors' %}"> Buscar autores </a>
 
-    <a href="/admin/">
-        Admin
-    </a>
-</nav>
+    <a href="/admin/"> Admin </a>
+
+    {% if user.is_authenticated %}
+
+    <span> Hola {{ user.username }} </span>
+
+    <form
+      action="{% url 'core:logout' %}"
+      method="post"
+      style="display: inline"
+    >
+      {% csrf_token %}
+      <button type="submit">Salir</button>
+    </form>
+
+    {% else %}
+
+    <a href="{% url 'core:login' %}"> Login </a>
+
+    <a href="{% url 'core:register' %}"> Registro </a>
+
+    {% endif %}
+  </nav>
 </header>
