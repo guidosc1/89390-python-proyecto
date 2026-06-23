@@ -1,35 +1,41 @@
-<header>
-  <nav>
-    <span>{{ nombre_sitio }}</span>
-    <a href="{% url 'core:home' %}">Inicio</a>
+<header class="site-header">
 
-    <a href="{% url 'core:post_list' %}"> Posts </a>
+  <nav class="navbar">
 
-    <a href="{% url 'core:post_create' %}"> Nuevo Post </a>
+    <div class="brand">
+      <span class="site-name">{{ nombre_sitio }}</span>
+    </div>
 
-    <a href="{% url 'core:search_authors' %}"> Buscar autores </a>
+    <div class="nav-links">
+      <a href="{% url 'core:home' %}">Inicio</a>
+      <a href="{% url 'core:post_list' %}">Posts</a>
+      <a href="{% url 'core:post_create' %}">Nuevo Post</a>
+      <a href="{% url 'core:search_authors' %}">Buscar autores</a>
+      <a href="/admin/">Admin</a>
+    </div>
 
-    <a href="/admin/"> Admin </a>
+    <div class="auth-section">
 
-    {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
 
-    <span> Hola {{ user.username }} </span>
+        <span class="user-greeting">
+          Hola {{ user.username }}
+        </span>
 
-    <form
-      action="{% url 'core:logout' %}"
-      method="post"
-      style="display: inline"
-    >
-      {% csrf_token %}
-      <button type="submit">Salir</button>
-    </form>
+        <form action="{% url 'core:logout' %}" method="post" class="logout-form">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Salir</button>
+        </form>
 
-    {% else %}
+      {% else %}
 
-    <a href="{% url 'core:login' %}"> Login </a>
+        <a href="{% url 'core:login' %}">Login</a>
+        <a href="{% url 'core:register' %}">Registro</a>
 
-    <a href="{% url 'core:register' %}"> Registro </a>
+      {% endif %}
 
-    {% endif %}
+    </div>
+
   </nav>
+
 </header>

@@ -1,13 +1,43 @@
-<form method="get">
-    <input type="text" name="q" value="{{ query }}">
-    <button type="submit">Buscar autores</button>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+  <h1>Buscar autores</h1>
+
+  <form method="get">
+
+    <div class="form-group">
+      <input type="text" name="q" value="{{ query }}" placeholder="Buscar por nombre...">
+    </div>
+
+    <button type="submit">Buscar</button>
+
+  </form>
+
+</div>
 
 {% for author in resultados %}
-    <div>
-        <h3>{{ author.name }}</h3>
-        <p>{{ author.email }}</p>
+
+  <div class="card">
+
+    <div class="card-title">
+      {{ author.name }}
     </div>
+
+    <div class="card-text">
+      {{ author.email }}
+    </div>
+
+  </div>
+
 {% empty %}
+
+  <div class="card">
     <p>No hay resultados</p>
+  </div>
+
 {% endfor %}
+
+{% endblock %}

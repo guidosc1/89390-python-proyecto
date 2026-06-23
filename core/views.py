@@ -56,7 +56,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
     template_name = "blog/post_form.html"
 
     success_url = reverse_lazy(
-        "post_list"
+        "core:post_list"
     )
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
@@ -68,7 +68,7 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
     template_name = "blog/post_form.html"
 
     success_url = reverse_lazy(
-        "post_list"
+        "core:post_list"
     )
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
@@ -78,7 +78,7 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
     template_name = "blog/post_confirm_delete.html"
 
     success_url = reverse_lazy(
-        "post_list"
+        "core:post_list"
     )
 
 class HomeView(TemplateView):

@@ -1,11 +1,29 @@
-<h1>{{ post.title }}</h1>
+{% extends 'base.html' %}
 
-<p>{{ post.content }}</p>
+{% block content %}
 
-<a href="{% url 'core:post_update' post.pk %}">
-    Editar
-</a>
+<div class="card">
 
-<a href="{% url 'core:post_delete' post.pk %}">
-    Eliminar
-</a>
+  <h1>{{ post.title }}</h1>
+
+  <p class="card-text">{{ post.content }}</p>
+
+  <div class="actions">
+
+    <a href="{% url 'core:post_update' post.pk %}">
+      Editar
+    </a>
+
+    <a href="{% url 'core:post_delete' post.pk %}">
+      Eliminar
+    </a>
+
+    <a href="{% url 'core:post_list' %}">
+      Volver
+    </a>
+
+  </div>
+
+</div>
+
+{% endblock %}

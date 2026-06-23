@@ -1,13 +1,36 @@
-<h1>Eliminar Post</h1>
+{% extends 'base.html' %}
 
-<p>
-    ¿Deseas eliminar "{{ post }}"?
-</p>
+{% block content %}
 
-<form method="post">
+<div class="form-container">
+
+  <h1>Eliminar Post</h1>
+
+  <div class="card">
+
+    <p class="card-text">
+      ¿Deseas eliminar "{{ post }}"?
+    </p>
+
+  </div>
+
+  <form method="post">
     {% csrf_token %}
 
-    <button type="submit">
+    <div class="actions">
+
+      <button type="submit">
         Confirmar
-    </button>
-</form>
+      </button>
+
+      <a href="{% url 'core:post_detail' post.pk %}">
+        Cancelar
+      </a>
+
+    </div>
+
+  </form>
+
+</div>
+
+{% endblock %}

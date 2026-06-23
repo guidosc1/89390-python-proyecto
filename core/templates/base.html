@@ -1,24 +1,15 @@
+<!-- Base Template -->
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>
-        
-        {% block title %}
-            Mi Blog
-        {% endblock %}
-    </title>
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %} Mi Blog {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}" />
+  </head>
+  <body>
+    {% include 'blog/partials/header.html' %}
 
-   {% include 'blog/partials/header.html' %}
-
-    <hr>
-
-    {% block content %}
-    {% endblock %}
-
-</body>
+    <main>{% block content %} {% endblock %}</main>
+  </body>
 </html>
