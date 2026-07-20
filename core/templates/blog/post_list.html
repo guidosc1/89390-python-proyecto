@@ -18,27 +18,35 @@
 <ul>
     {% for post in posts %}
         <li class="card">
+            
+            <!-- 1. Bloque de imagen de portada -->
+            {% if post.imagen_portada %}
+                <div class="card-image">
+                    <img src="{{ post.imagen_portada.url }}" alt="{{ post.title }}" class="post-cover-img">
+                </div>
+            {% endif %}
 
-            <div class="card-title">{{ post.title }}</div>
+            <!-- Envolvemos el texto en un contenedor para que tenga espaciado si hay imagen -->
+            <div class="card-body">
+                <div class="card-title">{{ post.title }}</div>
 
-            <div class="card-text">
-             {{ post.content|truncatechars:100 }}
-            </div>
+                <div class="card-text">
+                 {{ post.content|truncatechars:100 }}
+                </div>
 
-            <div class="actions">
+                <div class="actions">
+                    <a href="{% url 'core:post_detail' post.pk %}">
+                        Ver
+                    </a>
 
-                <a href="{% url 'core:post_detail' post.pk %}">
-                    Ver
-                </a>
+                    <a href="{% url 'core:post_update' post.pk %}">
+                        Editar
+                    </a>
 
-                <a href="{% url 'core:post_update' post.pk %}">
-                    Editar
-                </a>
-
-                <a href="{% url 'core:post_delete' post.pk %}">
-                    Eliminar
-                </a>
-
+                    <a href="{% url 'core:post_delete' post.pk %}">
+                        Eliminar
+                    </a>
+                </div>
             </div>
 
         </li>

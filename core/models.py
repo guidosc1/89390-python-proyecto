@@ -1,6 +1,4 @@
 from django.db import models
-
-from django.db import models
 from django.core.exceptions import ValidationError
 
 
@@ -32,6 +30,9 @@ class Post(models.Model):
     tags = models.ManyToManyField(
         Tag
     )
+
+    # 1. Agregamos el campo para la imagen de portada aquí:
+    imagen_portada = models.ImageField(upload_to='portadas/', null=True, blank=True)
 
     def __str__(self):
         return self.title

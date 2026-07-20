@@ -11,6 +11,7 @@ class PostForm(forms.ModelForm):
             "content",
             "author",
             "tags",
+            "imagen_portada",
         ]
 
 
